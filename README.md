@@ -2,6 +2,7 @@
 
 ![AkibaSafe Banner](https://img.shields.io/badge/Bitcoin-Savings-orange)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
+
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3-38bdf8)
 
