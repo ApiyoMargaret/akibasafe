@@ -34,7 +34,7 @@ Every day, thousands of Kenyans lose money in digital savings platforms. Users s
 | Withdrawal restrictions | Platforms can freeze or limit access to your own money |
 | Poor returns | Interest rates below inflation (losing purchasing power) |
 
-## Solution
+## Solution.
 
 **AkibaSafe turns "trust me" into "verify me."**
 
