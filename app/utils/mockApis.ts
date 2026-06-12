@@ -12,7 +12,8 @@ export interface TandoResponse {
 
 export const mockBitikaPurchase = async (kesAmount: number): Promise<BitikaResponse> => {
   await new Promise(resolve => setTimeout(resolve, 1500));
-  const satsReceived = Math.floor(kesAmount * 22);
+  // FIXED: Changed from 22 to 20
+  const satsReceived = Math.floor(kesAmount * 20);
   return {
     success: true,
     satsReceived,
@@ -22,7 +23,8 @@ export const mockBitikaPurchase = async (kesAmount: number): Promise<BitikaRespo
 
 export const mockSubmarineSwap = async (satsAmount: number): Promise<number> => {
   await new Promise(resolve => setTimeout(resolve, 1000));
-  const stableValue = Math.floor(satsAmount * 0.98);
+  // Keep 0.5% fee
+  const stableValue = Math.floor(satsAmount * 0.995);
   return stableValue;
 };
 

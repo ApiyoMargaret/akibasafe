@@ -25,13 +25,15 @@ interface UserState {
 // Mock API functions
 const mockBitikaPurchase = async (kesAmount: number): Promise<{ satsReceived: number }> => {
   await new Promise(resolve => setTimeout(resolve, 1500));
-  const satsReceived = Math.floor(kesAmount * 22);
+  // FIXED: Changed from 22 to 20
+  const satsReceived = Math.floor(kesAmount * 20);
   return { satsReceived };
 };
 
 const mockSubmarineSwap = async (satsAmount: number): Promise<number> => {
   await new Promise(resolve => setTimeout(resolve, 1000));
-  return Math.floor(satsAmount * 0.98);
+  // 0.5% fee
+  return Math.floor(satsAmount * 0.995);
 };
 
 const mockLoopOut = async (satsAmount: number): Promise<boolean> => {
@@ -135,7 +137,8 @@ export const useAkibaSafe = () => {
     try {
       const bitika = await mockBitikaPurchase(kesAmount);
       const stableValue = await mockSubmarineSwap(bitika.satsReceived);
-      const stableKES = Math.floor(stableValue / 100);
+      // FIXED: Changed from /100 to /20 for correct conversion
+      const stableKES = Math.floor(stableValue / 20);
       
       setState(prev => ({
         ...prev,
@@ -184,7 +187,6 @@ export const useAkibaSafe = () => {
       
       toast.success(`Added ${formatSats(bitika.satsReceived)} to your savings!`);
       
-      // Check auto-sweep after a short delay
       setTimeout(() => {
         checkAutoSweep();
       }, 500);
@@ -292,7 +294,7 @@ export const useAkibaSafe = () => {
         });
       }
       
-      const kesEquivalent = Math.floor(amountSats / 22);
+      const kesEquivalent = Math.floor(amountSats / 20);
       await mockTandoSpend(phoneNumber, kesEquivalent);
       
       setState(prev => ({
